@@ -1,1 +1,4 @@
-export default { root: './src' };
+// vite.config.js
+export default {
+  root: './src'
+};
