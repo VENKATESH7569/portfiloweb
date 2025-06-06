@@ -30,7 +30,7 @@ export default function App() {
           <p className="text-gray-300">Data Science Engineer | Web Developer</p>
         </div>
         <div>
-          <img src="/images/profile.jpg" alt="Profile images" className="rounded-2xl shadow-xl w-full max-w-sm" />
+          <img src="/images/dp.jpg" alt="dp images" className="rounded-2xl shadow-xl w-full max-w-sm" />
         </div>
       </section>
 
