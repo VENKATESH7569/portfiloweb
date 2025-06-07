@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState } from "react";
+import emailjs from '@emailjs/browser'; // ✅ EmailJS import
 
 // Custom components replacing ShadCN UI
 const Card = ({ children }) => <div className="bg-gray-800 rounded-xl p-4 shadow-md mb-4">{children}</div>;
@@ -18,8 +19,31 @@ export default function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert("This is a placeholder for email submission!");
-    setFormData({ name: '', email: '', message: '' });
+
+    const serviceID = 'service_w198aki';
+    const templateID = 'template_28t9loq';
+    const publicKey = 'DNwe7dmhgGuMLAaZV';
+
+    const templateParams = {
+  from_name: formData.name,
+  reply_to: formData.email,
+  message: formData.message,
+};
+
+
+    console.log("Template Params:", templateParams);
+
+
+    emailjs.send(serviceID, templateID, templateParams, publicKey)
+      .then((response) => {
+        alert('Message sent successfully!');
+        setFormData({ name: '', email: '', message: '' });
+      })
+      .catch((error) => {
+  alert('Failed to send message. Please try again later.');
+  console.error('EmailJS Error:', error.text || error);
+});
+
   };
 
   return (
@@ -75,7 +99,7 @@ export default function App() {
 
           <Card>
             <CardContent>
-              <img src="/images/churn_pred.jpg" alt=" Customer Churn Prediction images" className="rounded mb-4" />
+              <img src="/images/churn_pred.jpg" alt="Customer Churn Prediction images" className="rounded mb-4" />
               <h3 className="text-lg font-bold mb-2">Customer Churn Prediction</h3>
               <p className="text-gray-400 mb-2">Predicts whether customers will leave a service using classification models.</p>
               <a href="https://github.com/VENKATESH7569/CHURN-PREDCTION" className="text-purple-400 underline">View on GitHub</a>
