@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import emailjs from '@emailjs/browser';
 import { motion } from 'framer-motion';
 import { FaGithub, FaLinkedin, FaFileAlt } from 'react-icons/fa';
+import { title } from 'framer-motion/client';
 
 const Input = (props) => (
   <input
@@ -77,7 +78,7 @@ export default function App() {
         <motion.h1
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          className='text-5xl font-extrabold text-purple-500 mb-2'
+          className='text-5xl font-extrabold text-[#008080] mb-2'
         >
           Gadige Venkatesh
         </motion.h1>
@@ -108,49 +109,272 @@ export default function App() {
         />
       </section>
 
-      <section className='mb-16'>
-        <h2 className='text-2xl font-semibold mb-6'>Projects & Case Studies</h2>
-        <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
-          {[
-            {
-              title: 'Crop Recommendation System',
-              desc: 'Predicts the best crop based on soil and climate inputs using ML.',
-              img: '/images/Crop.jpg',
-              link: 'https://github.com/VENKATESH7569/Crop-recommendation-system',
-            },
-            {
-              title: 'House Price Prediction',
-              desc: 'Predicts house prices based on features using regression models.',
-              img: '/images/House.jpg',
-              link: 'https://github.com/VENKATESH7569/HOUSE-PRICE-PREDCTION',
-            },
-            {
-              title: 'Email Spam Filtering',
-              desc: 'Classifies emails as spam or not using NLP and ML techniques.',
-              img: '/images/email_spam.jpg',
-              link: 'https://github.com/VENKATESH7569/EMAIL-SPAM-FILTERING',
-            },
-            {
-              title: 'Customer Churn Prediction',
-              desc: 'Predicts whether customers will leave a service using classification models.',
-              img: '/images/churn_pred.jpg',
-              link: 'https://github.com/VENKATESH7569/CHURN-PREDCTION',
-            },
-          ].map(({ title, desc, img, link }) => (
-            <Card key={title}>
-              <img src={img} alt={title} className='rounded-lg mb-4 w-full h-48 object-cover' />
-              <h3 className='text-xl font-bold mb-2'>{title}</h3>
-              <p className='text-gray-300 mb-2'>{desc}</p>
-              <a href={link} className='text-purple-400 underline' target='_blank'>View on GitHub</a>
-            </Card>
-          ))}
-        </div>
-      </section>
+      <section className="mb-16">
+  <h2 className="text-4xl font-bold text-white mb-10 text-center">
+    🚀 Projects & Case Studies
+  </h2>
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+    {[
+      {
+        title: '🌾 Crop Recommendation System',
+        desc: 'Predicts the best crop based on soil and climate inputs using ML.',
+        img: '/images/Crop.jpg',
+        link: 'https://github.com/VENKATESH7569/Crop-recommendation-system',
+      },
+      {
+        title: '🏠 House Price Prediction',
+        desc: 'Predicts house prices based on features using regression models.',
+        img: '/images/House.jpg',
+        link: 'https://github.com/VENKATESH7569/HOUSE-PRICE-PREDCTION',
+      },
+      {
+        title: '📧 Email Spam Filtering',
+        desc: 'Classifies emails as spam or not using NLP and ML techniques.',
+        img: '/images/email_spam.jpg',
+        link: 'https://github.com/VENKATESH7569/EMAIL-SPAM-FILTERING',
+      },
+      {
+        title: '📉 Customer Churn Prediction',
+        desc: 'Predicts whether customers will leave a service using classification models.',
+        img: '/images/churn_pred.jpg',
+        link: 'https://github.com/VENKATESH7569/CHURN-PREDCTION',
+      },
+    ].map(({ title, desc, img, link }) => (
+      <div
+        key={title}
+        className="bg-gray-800 rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 transform hover:scale-105 p-4"
+      >
+        <img
+          src={img}
+          alt={title}
+          className="rounded-lg mb-4 w-full h-52 object-cover border border-gray-700 transition-transform duration-300 hover:scale-105 hover:brightness-90"
+        />
+        <h3 className="text-2xl font-semibold text-white mb-2">{title}</h3>
+        <p className="text-gray-400 mb-3">{desc}</p>
+        <a
+          href={link}
+          className="text-purple-400 underline font-medium hover:text-purple-300"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          View on GitHub
+        </a>
+      </div>
+    ))}
+  </div>
+</section>
 
-      <section className='mb-16'>
-        <h2 className='text-2xl font-semibold mb-2'>Technical Skills</h2>
-        <p className='text-gray-300'>Python, R, SQL, Pandas, NumPy, Scikit-learn, TensorFlow, Power BI, React, HTML/CSS, Git, Flask</p>
-      </section>
+      <section className="mb-16">
+  <h2 className="text-5xl font-semibold mb-2">⚙️🎯SKILLS AND EXPERTISE</h2>
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+    {
+    <div>
+      <h3 className="text-4xl font-medium mb-2">💻 Programming Languages</h3>
+      <ul className="list-disc list-inside space-y-1">
+        {[
+          { name: "Python" },
+          { name: "JavaScript" },
+          { name: "HTML/CSS" },
+        ].map((lang, index) => (
+          <li key={index}>{lang.name}</li>
+        ))}
+      </ul>
+    </div>
+    }
+    {
+    <div>
+  <h3 className="text-4xl font-medium mb-2">🗄️Databases</h3>
+  <ul className="list-disc list-inside">
+    {[
+      { name: "MySQL" },
+      { name: "Windows" },
+      { name: "Linux" },
+      { name: "MacOS" },
+    ].map((lang, index) => (
+      <li key={index}>{lang.name}</li>
+    ))}
+  </ul>
+</div>
+    }
+    {
+     <div>
+  <h3 className="text-4xl font-medium mb-2">🤖Machine Learning</h3>
+  <ul className="list-disc list-inside">
+    {[
+      { name: "ML Models" },
+      { name: "NLP" },
+      { name: "Computer Vision" },
+    ].map((lang, index) => (
+      <li key={index}>{lang.name}</li>
+    ))}
+  </ul>
+</div> 
+    }
+    {
+      <div>
+  <h3 className="text-4xl font-medium mb-2">📊Data Analysis</h3>
+  <ul className="list-disc list-inside">
+    {[
+      { name: "Pandas" },
+      { name: "Numpy" },
+      { name: "Matplotlib" },
+      { name: "Skict-Learn" },
+      { name: "Seaborn"},
+    ].map((lang, index) => (
+      <li key={index}>{lang.name}</li>
+    ))}
+  </ul>
+</div>
+    }
+    {
+      <div>
+  <h3 className="text-4xl font-medium mb-2">Frameworks & Tools</h3>
+  <ul className="list-disc list-inside">
+    {[
+      { name: "Power BI" },
+      { name: "Tableau" },
+      { name: "Flask" },
+      { name: "Git" },
+      {name: "Google Colab"},
+    ].map((lang, index) => (
+      <li key={index}>{lang.name}</li>
+    ))}
+  </ul>
+</div>
+    }
+    {
+      <div>
+  <h3 className="text-4xl font-medium mb-2">🌐 Web Development</h3>
+  <ul className="list-disc list-inside">
+    {[
+      { name: "Responsive Design" },
+      { name: "Modern Frameworks" },
+      { name: "User Experience" },
+    ].map((lang, index) => (
+      <li key={index}>{lang.name}</li>
+    ))}
+  </ul>
+</div>
+    }
+  </div>
+</section>
+    <section className="mb-16">
+  <h2 className="text-5xl font-semibold mb-6">⏳EXPERIENCE</h2>
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+
+    <div>
+      <h3 className="text-4xl font-medium mb-4">💡 Technohacks</h3>
+      <ul className="list-disc list-inside space-y-2">
+        {[
+          "Worked on real-world datasets to build predictive models using Python and scikit-learn.",
+          "Gained hands-on experience with data preprocessing, feature engineering, and model evaluation techniques.",
+          "Completed multiple mini-projects, including spam detection and car service prediction, under guided mentorship.",
+        ].map((point, index) => (
+          <li key={index}>{point}</li>
+        ))}
+      </ul>
+    </div>
+    <div>
+      <h3 className="text-4xl font-medium mb-4">🤖 Coincent.AI</h3>
+      <ul className="list-disc list-inside space-y-2">
+        {[
+          "Built machine learning models from scratch using Python, NumPy, and Pandas for structured data problems.",
+          "Explored core ML algorithms like Naïve Bayes, Linear Regression, and KNN with hands-on implementation.",
+          "Developed and evaluated models using cross-validation, confusion matrix, and performance metrics like accuracy and RMSE.",
+        ].map((point, index) => (
+          <li key={index}>{point}</li>
+        ))}
+      </ul>
+    </div>
+
+  </div>
+</section>
+    <section className="mb-16">
+  <h2 className="text-5xl font-semibold mb-6">🎓EDUCATION</h2>
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+
+    <div className="bg-gray-800 p-6 rounded-xl shadow-md">
+  <h3 className="text-4xl font-semibold mb-4">🎓 Education</h3>
+  <div className="space-y-3">
+    <div>
+      <p className="text-2xl font-medium">J.B. Institute of Engineering and Technology</p>
+      <p className="text-lg text-gray-400">Bachelor of Technology – Artificial Intelligence & Machine Learning</p>
+      <p className="text-md text-gray-400">📍 Hyderabad, India</p>
+      <p className="text-md text-gray-400">📅 2022 – 2026</p>
+      <p className="text-sm text-green-400 font-medium mt-1">Status: In Progress</p>
+    </div>
+  </div>
+</div>
+
+     <div className="bg-gray-800 p-6 rounded-xl shadow-md">
+  <h3 className="text-4xl font-semibold mb-4">🎓 Education</h3>
+  <div className="space-y-3">
+    <div>
+      <p className="text-2xl font-medium">Prathiba JR College</p>
+      <p className="text-md text-gray-400">📍 Mahabubnagar, Telengana</p>
+      <p className="text-md text-gray-400">📅 2020 – 2022</p>
+      <p className="text-sm text-green-400 font-medium mt-1">Status: Completed</p>
+    </div>
+  </div>
+</div>
+ <div className="bg-gray-800 p-6 rounded-xl shadow-md">
+  <h3 className="text-4xl font-semibold mb-4">🎓 Education</h3>
+  <div className="space-y-3">
+    <div>
+      <p className="text-2xl font-medium">Fatima Vidyalayam</p>
+      <p className="text-md text-gray-400">📍 Mahabubnagar, Telengana</p>
+      <p className="text-md text-gray-400">📅 2011 – 2020</p>
+      <p className="text-sm text-green-400 font-medium mt-1">Status: Completed</p>
+    </div>
+  </div>
+</div>
+
+  </div>
+</section>
+<section className="mb-16">
+  <h2 className="text-5xl font-semibold mb-10 text-white">🎓 PROFESSIONAL CERTIFICATES</h2>
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+    {[
+      {
+        title: 'Technohacks',
+        desc: 'Explored core concepts of Data Science through real-world projects during my internship.',
+        link: 'https://drive.google.com/file/d/1VNdbaTAz0D9VACI5NmLt7wb6PDIyQ4I-/view?usp=sharing',
+      },
+      {
+        title: 'Coincent.AI',
+        desc: 'Applied Python for Machine Learning during internship via hands-on model development.',
+        link: 'https://drive.google.com/file/d/1fvcA3CWFX74Z4gCS9n5WW4rv4xI3BCtG/view?usp=sharing',
+      },
+      {
+        title: 'Coursera',
+        desc: 'Completed course on transforming raw, messy data into clean datasets for analysis.',
+        link: 'https://drive.google.com/file/d/1a8kcIXQO24Tq72h3tRCTJDwQbHfMWnWz/view?usp=sharing',
+      },
+      {
+        title: 'NPTEL',
+        desc: 'Completed NPTEL certification in Data Science including statistics and practical applications.',
+        link: 'https://drive.google.com/file/d/1FSmpnbbE5lY3g5qKj-BdGxcsXZMpTV9s/view?usp=sharing',
+      },
+    ].map(({ title, desc, link }) => (
+      <div
+        key={title}
+        className="bg-gray-800 rounded-2xl shadow-md hover:shadow-xl transform transition-transform duration-300 hover:scale-105 p-6"
+      >
+        <h3 className="text-2xl font-bold text-white mb-2">{title}</h3>
+        <p className="text-gray-300 mb-4">{desc}</p>
+        <a
+          href={link}
+          className="text-purple-400 underline hover:text-purple-300 font-medium"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          View Certificate
+        </a>
+      </div>
+    ))}
+  </div>
+</section>
+
 
       <section className='mb-16'>
         <h2 className='text-2xl font-semibold mb-4'>Get in Touch</h2>
