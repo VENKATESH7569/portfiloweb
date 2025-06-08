@@ -1,13 +1,43 @@
-import React from 'react';
-import { useState } from "react";
-import emailjs from '@emailjs/browser'; // ✅ EmailJS import
+import React, { useState } from 'react';
+import emailjs from '@emailjs/browser';
+import { motion } from 'framer-motion';
+import { FaGithub, FaLinkedin, FaFileAlt } from 'react-icons/fa';
 
-// Custom components replacing ShadCN UI
-const Card = ({ children }) => <div className="bg-gray-800 rounded-xl p-4 shadow-md mb-4">{children}</div>;
-const CardContent = ({ children }) => <div>{children}</div>;
-const Input = (props) => <input {...props} className={"p-2 rounded bg-gray-800 border border-gray-700 text-white " + props.className} />;
-const Textarea = (props) => <textarea {...props} className={"p-2 rounded bg-gray-800 border border-gray-700 text-white " + props.className} />;
-const Button = (props) => <button {...props} className={"p-2 rounded bg-purple-600 hover:bg-purple-700 text-white " + props.className} />;
+const Input = (props) => (
+  <input
+    {...props}
+    className={
+      'w-full p-3 rounded-lg bg-[#1E1E2F] border border-[#33334d] text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all ' +
+      props.className
+    }
+  />
+);
+
+const Textarea = (props) => (
+  <textarea
+    {...props}
+    className={
+      'w-full p-3 rounded-lg bg-[#1E1E2F] border border-[#33334d] text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all ' +
+      props.className
+    }
+  />
+);
+
+const Button = (props) => (
+  <button
+    {...props}
+    className='bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-semibold py-2 px-4 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg'
+  />
+);
+
+const Card = ({ children }) => (
+  <motion.div
+    whileHover={{ scale: 1.02 }}
+    className='bg-[#2A2A3B] bg-opacity-70 rounded-2xl p-5 shadow-xl backdrop-blur-md transition-all'
+  >
+    {children}
+  </motion.div>
+);
 
 export default function App() {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
@@ -19,137 +49,127 @@ export default function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     const serviceID = 'service_w198aki';
     const templateID = 'template_28t9loq';
     const publicKey = 'DNwe7dmhgGuMLAaZV';
 
     const templateParams = {
-  from_name: formData.name,
-  reply_to: formData.email,
-  message: formData.message,
-};
+      from_name: formData.name,
+      reply_to: formData.email,
+      message: formData.message,
+    };
 
-
-    console.log("Template Params:", templateParams);
-
-
-    emailjs.send(serviceID, templateID, templateParams, publicKey)
-      .then((response) => {
+    emailjs
+      .send(serviceID, templateID, templateParams, publicKey)
+      .then(() => {
         alert('Message sent successfully!');
         setFormData({ name: '', email: '', message: '' });
       })
       .catch((error) => {
-  alert('Failed to send message. Please try again later.');
-  console.error('EmailJS Error:', error.text || error);
-});
-
+        alert('Failed to send message. Please try again later.');
+        console.error('EmailJS Error:', error);
+      });
   };
 
   return (
-    <main className="bg-black text-white min-h-screen p-6 font-sans">
-      <section className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
-        <div>
-          <h1 className="text-4xl font-bold mb-4">Gadige Venkatesh</h1>
-          <p className="text-gray-300">Data Science Engineer | Web Developer</p>
+    <main className='bg-[#121212] text-white min-h-screen font-sans px-6 py-10 md:px-20'>
+      <section className='mb-12 text-center'>
+        <motion.h1
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className='text-5xl font-extrabold text-purple-500 mb-2'
+        >
+          Gadige Venkatesh
+        </motion.h1>
+        <p className='text-gray-400 text-lg'>Data Science Engineer | Web Developer</p>
+      </section>
+
+      <section className='grid grid-cols-1 md:grid-cols-2 gap-10 mb-16'>
+        <motion.div
+          initial={{ opacity: 0, x: -30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          <h2 className='text-2xl font-semibold mb-4'>About Me</h2>
+          <p className='text-gray-300'>
+            I am a Data Science Engineer with a strong foundation in statistics, machine learning, and data analysis.
+            I combine technical expertise with web development skills to build intelligent, user-friendly applications
+            that solve real-world problems.
+          </p>
+        </motion.div>
+
+        <motion.img
+          src='/images/dp.jpg'
+          alt='Profile'
+          className='rounded-full shadow-lg w-60 h-60 object-cover mx-auto'
+          initial={{ opacity: 0, x: 30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5 }}
+        />
+      </section>
+
+      <section className='mb-16'>
+        <h2 className='text-2xl font-semibold mb-6'>Projects & Case Studies</h2>
+        <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
+          {[
+            {
+              title: 'Crop Recommendation System',
+              desc: 'Predicts the best crop based on soil and climate inputs using ML.',
+              img: '/images/Crop.jpg',
+              link: 'https://github.com/VENKATESH7569/Crop-recommendation-system',
+            },
+            {
+              title: 'House Price Prediction',
+              desc: 'Predicts house prices based on features using regression models.',
+              img: '/images/House.jpg',
+              link: 'https://github.com/VENKATESH7569/HOUSE-PRICE-PREDCTION',
+            },
+            {
+              title: 'Email Spam Filtering',
+              desc: 'Classifies emails as spam or not using NLP and ML techniques.',
+              img: '/images/email_spam.jpg',
+              link: 'https://github.com/VENKATESH7569/EMAIL-SPAM-FILTERING',
+            },
+            {
+              title: 'Customer Churn Prediction',
+              desc: 'Predicts whether customers will leave a service using classification models.',
+              img: '/images/churn_pred.jpg',
+              link: 'https://github.com/VENKATESH7569/CHURN-PREDCTION',
+            },
+          ].map(({ title, desc, img, link }) => (
+            <Card key={title}>
+              <img src={img} alt={title} className='rounded-lg mb-4 w-full h-48 object-cover' />
+              <h3 className='text-xl font-bold mb-2'>{title}</h3>
+              <p className='text-gray-300 mb-2'>{desc}</p>
+              <a href={link} className='text-purple-400 underline' target='_blank'>View on GitHub</a>
+            </Card>
+          ))}
         </div>
-        <div>
-          <img src="/images/dp.jpg" alt="dp images" className="rounded-2xl shadow-xl w-full max-w-sm" />
-        </div>
       </section>
 
-      <section className="mb-10">
-        <h2 className="text-2xl font-semibold mb-2">About Me</h2>
-        <p className="text-gray-400">
-          I am a Data Science Engineer with a strong foundation in statistics, machine learning, and data analysis.
-          I combine technical expertise with web development skills to build intelligent, user-friendly applications
-          that solve real-world problems.
-        </p>
+      <section className='mb-16'>
+        <h2 className='text-2xl font-semibold mb-2'>Technical Skills</h2>
+        <p className='text-gray-300'>Python, R, SQL, Pandas, NumPy, Scikit-learn, TensorFlow, Power BI, React, HTML/CSS, Git, Flask</p>
       </section>
 
-      <section className="mb-10">
-        <h2 className="text-2xl font-semibold mb-2">Projects & Case Studies</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <Card>
-            <CardContent>
-              <img src="/images/Crop.jpg" alt="Crop Recommendation images" className="rounded mb-4" />
-              <h3 className="text-lg font-bold mb-2">Crop Recommendation System</h3>
-              <p className="text-gray-400 mb-2">Predicts the best crop based on soil and climate inputs using ML.</p>
-              <a href="https://github.com/VENKATESH7569/Crop-recommendation-system" className="text-purple-400 underline">View on GitHub</a>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardContent>
-              <img src="/images/House.jpg" alt="House Price Prediction images" className="rounded mb-4" />
-              <h3 className="text-lg font-bold mb-2">House Price Prediction</h3>
-              <p className="text-gray-400 mb-2">Predicts house prices based on features using regression models.</p>
-              <a href="https://github.com/VENKATESH7569/HOUSE-PRICE-PREDCTION" className="text-purple-400 underline">View on GitHub</a>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardContent>
-              <img src="/images/email_spam.jpg" alt="Email Spam Filtering images" className="rounded mb-4" />
-              <h3 className="text-lg font-bold mb-2">Email Spam Filtering</h3>
-              <p className="text-gray-400 mb-2">Classifies emails as spam or not using NLP and ML techniques.</p>
-              <a href="https://github.com/VENKATESH7569/EMAIL-SPAM-FILTERING" className="text-purple-400 underline">View on GitHub</a>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardContent>
-              <img src="/images/churn_pred.jpg" alt="Customer Churn Prediction images" className="rounded mb-4" />
-              <h3 className="text-lg font-bold mb-2">Customer Churn Prediction</h3>
-              <p className="text-gray-400 mb-2">Predicts whether customers will leave a service using classification models.</p>
-              <a href="https://github.com/VENKATESH7569/CHURN-PREDCTION" className="text-purple-400 underline">View on GitHub</a>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
-
-      <section className="mb-10">
-        <blockquote className="italic text-gray-400 border-l-4 pl-4 border-purple-500">
-          "Data is not just numbers, it’s insight waiting to be discovered."
-        </blockquote>
-      </section>
-
-      <section className="mb-10">
-        <h2 className="text-2xl font-semibold mb-2">Technical Skills</h2>
-        <p className="text-gray-400">
-          Python, R, SQL, Pandas, NumPy, Scikit-learn, TensorFlow, Power BI, React, HTML/CSS, Git, Flask
-        </p>
-      </section>
-
-      <section>
-        <h2 className="text-2xl font-semibold mb-2">Get in Touch</h2>
-        <form onSubmit={handleSubmit} className="grid gap-4 max-w-md">
-          <Input
-            name="name"
-            type="text"
-            placeholder="Name"
-            value={formData.name}
-            onChange={handleChange}
-            required
-          />
-          <Input
-            name="email"
-            type="email"
-            placeholder="Email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-          />
-          <Textarea
-            name="message"
-            placeholder="Your message"
-            value={formData.message}
-            onChange={handleChange}
-            required
-          />
-          <Button type="submit">Send</Button>
+      <section className='mb-16'>
+        <h2 className='text-2xl font-semibold mb-4'>Get in Touch</h2>
+        <form onSubmit={handleSubmit} className='grid gap-4 max-w-md'>
+          <Input name='name' type='text' placeholder='Your Name' value={formData.name} onChange={handleChange} required />
+          <Input name='email' type='email' placeholder='Your Email' value={formData.email} onChange={handleChange} required />
+          <Textarea name='message' placeholder='Your Message' rows='5' value={formData.message} onChange={handleChange} required />
+          <Button type='submit'>Send Message</Button>
         </form>
       </section>
+
+      <footer className='border-t border-gray-700 pt-6 mt-12 text-center text-gray-400'>
+        <div className='flex justify-center gap-6 text-xl mb-4'>
+          <a href='https://github.com/VENKATESH7569' target='_blank' rel='noreferrer' className='hover:text-white'><FaGithub /></a>
+          <a href='https://www.linkedin.com/in/venkatesh-g-92293b292/' target='_blank' rel='noreferrer' className='hover:text-white'><FaLinkedin /></a>
+          <a href='https://drive.google.com/file/d/1iJwdQ5H7DP70Y3OI7ZwotQhQDIrWaXzY/view?usp=sharing' target='_blank' rel='noreferrer' className='hover:text-white'><FaFileAlt /></a>
+        </div>
+        <p>© {new Date().getFullYear()} Gadige Venkatesh. All rights reserved.</p>
+      </footer>
     </main>
   );
 }
