@@ -164,6 +164,52 @@ export default function App() {
   </div>
 </section>
 
+<section className="mb-16">
+  <h2 className="text-2xl font-semibold mb-12 text-center">My Data Science Journey</h2>
+  
+  <div className="flex flex-wrap justify-center gap-24"> 
+
+    <motion.div 
+      className="flex flex-col items-center"
+      whileHover={{ scale: 1.05, transition: { type: "spring", stiffness: 300 } }}
+    >
+      <div className="w-32 h-32 rounded-full bg-gradient-to-br from-purple-600 to-pink-600 flex items-center justify-center shadow-lg mb-4">
+        <span className="text-3xl font-bold text-white">2+</span>
+      </div>
+      <div className="text-center space-y-1">
+        <p className="text-gray-300 font-medium">Years Learning</p>
+        <p className="text-gray-400">Data Science & ML</p>
+      </div>
+    </motion.div>
+
+    <motion.div 
+      className="flex flex-col items-center"
+      whileHover={{ scale: 1.05, transition: { type: "spring", stiffness: 300 } }}
+    >
+      <div className="w-32 h-32 rounded-full bg-gradient-to-br from-purple-600 to-pink-600 flex items-center justify-center shadow-lg mb-4">
+        <span className="text-3xl font-bold text-white">5+</span>
+      </div>
+      <div className="text-center space-y-1">
+        <p className="text-gray-300 font-medium">Projects</p>
+        <p className="text-gray-400">Completed</p>
+      </div>
+    </motion.div>
+
+    <motion.div 
+      className="flex flex-col items-center"
+      whileHover={{ scale: 1.05, transition: { type: "spring", stiffness: 300 } }}
+    >
+      <div className="w-32 h-32 rounded-full bg-gradient-to-br from-purple-600 to-pink-600 flex items-center justify-center shadow-lg mb-4">
+        <span className="text-3xl font-bold text-white">90%</span>
+      </div>
+      <div className="text-center space-y-1">
+        <p className="text-gray-300 font-medium">Accuracy</p>
+        <p className="text-gray-400">in ML Models</p>
+      </div>
+    </motion.div>
+  </div>
+</section>
+
       <section className="mb-16">
   <h2 className="text-5xl font-semibold mb-2">⚙️🎯SKILLS AND EXPERTISE</h2>
   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
