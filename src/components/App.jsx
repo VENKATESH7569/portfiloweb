@@ -436,7 +436,7 @@ export default function App() {
         <div className='flex justify-center gap-6 text-xl mb-4'>
           <a href='https://github.com/VENKATESH7569' target='_blank' rel='noreferrer' className='hover:text-white'><FaGithub /></a>
           <a href='https://www.linkedin.com/in/venkatesh-g-92293b292/' target='_blank' rel='noreferrer' className='hover:text-white'><FaLinkedin /></a>
-          <a href='https://drive.google.com/drive/folders/1pZLBEWlp2HCsigAF2_gJ--m9y3NdCokb?usp=sharing' target='_blank' rel='noreferrer' className='hover:text-white'><FaFileAlt /></a>
+          <a href='https://drive.google.com/file/d/1H2CF2nc775gzH742nRWi-5B8ELLI81nm/view?usp=sharing' target='_blank' rel='noreferrer' className='hover:text-white'><FaFileAlt /></a>
         </div>
         <p>© {new Date().getFullYear()} Gadige Venkatesh. All rights reserved.</p>
       </footer>
